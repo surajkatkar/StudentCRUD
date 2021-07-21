@@ -23,9 +23,11 @@ public class StudentController {
 	@GetMapping("/")
 	public String studentHandler(Model model)
 	{
+		System.out.println("Inside Handler");
 		List <Student> listStudent=service.listAll();
-		model.addAttribute(listStudent);
-		return "home";
+		model.addAttribute("listStudent",listStudent);
+		System.out.println("getting Data "+ listStudent);
+		return "home"; 
 	}
 	
 	@GetMapping("/new")
@@ -51,10 +53,10 @@ public class StudentController {
 		return mav;
 	}
 	
-	@RequestMapping
+	@RequestMapping("/delete/{id}")
 	public String deleteStudent(@PathVariable(name="id")int id)
 	{
 		service.delete(id);
-		return "new";
+		return "redirect:/";
 	}
 }

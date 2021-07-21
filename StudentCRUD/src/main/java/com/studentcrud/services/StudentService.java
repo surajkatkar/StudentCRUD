@@ -32,6 +32,6 @@ public class StudentService {
 	
 	public void delete(long id)
 	{
-		repo.existsById(id);
+		repo.deleteById(id);
 	}
 }
